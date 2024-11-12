@@ -1,4 +1,5 @@
 # 線形合同法
+# x_{i+1} = a * x_i + c (mod module)
 class LinearCongruentialGenerator:
     def __init__(self, a: int, c: int, module: int, seed: int):
         # readonly
@@ -39,10 +40,12 @@ class LinearCongruentialGenerator:
         initial_value = self.value
 
         self.reset()
-        while True:
+        for _ in range(self.module):
             next = self.generate()
             if next == self.seed:
                 period = self.index
                 self.index = initial_index
                 self.value = initial_value
                 return period
+
+        raise Exception("period not found")
