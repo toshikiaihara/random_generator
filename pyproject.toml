@@ -34,3 +34,18 @@ known-third-party = ["fastapi", "pydantic", "starlette"]
 [tool.ruff.lint.pyupgrade]
 # Python3.8互換のための設定
 keep-runtime-typing = true
+[tool.poetry]
+name = "random-generator"
+version = "0.1.0"
+description = ""
+authors = ["toshikiaihara <2toshiki0718@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+numpy = "^2.1.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
