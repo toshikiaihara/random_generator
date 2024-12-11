@@ -1,5 +1,5 @@
 class XorShift32:
-    _BIT_MASK = 0xFFFFFFFF
+    _BIT_MASK = 2**32 - 1
 
     def __init__(self, seed: int):
         self.state = seed & self._BIT_MASK
