@@ -11,15 +11,15 @@ class XorShift128Plus:
         self.b = b
         self.c = c
 
-    def __xorshift(self, value: int, dimension: str, shift_amount: int):
+    def __xorshift(self, value: int, direction: str, shift_amount: int):
         if shift_amount <= 0:
             raise ValueError("Shift amount must be greater than 0")
 
-        if dimension == "left":
+        if direction == "left":
             return value ^ (value << shift_amount) & self._STATE_BIT_MASK
-        elif dimension == "right":
+        elif direction == "right":
             return value ^ (value >> shift_amount)
-        raise ValueError(f"Invalid dimension: {dimension}")
+        raise ValueError(f"Invalid direction: {direction}")
 
     def generate(self, output_format: str | None = None):
         old_s0, old_s1 = self.state
