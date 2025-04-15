@@ -1,11 +1,11 @@
 # 線形合同法
-# x_{i+1} = a * x_i + c (mod module)
+# x_{i+1} = a * x_i + c (mod modulo)
 class LinearCongruentialGenerator:
-    def __init__(self, a: int, c: int, module: int, seed: int):
+    def __init__(self, a: int, c: int, modulo: int, seed: int):
         # readonly
-        self.a = a % module
-        self.c = c % module
-        self.module = module
+        self.a = a % modulo
+        self.c = c % modulo
+        self.modulo = modulo
         self.seed = seed
 
         # state
@@ -17,7 +17,7 @@ class LinearCongruentialGenerator:
 
     def generate(self) -> int:
         self.index += 1
-        self.value = (self.a * self.value + self.c) % self.module
+        self.value = (self.a * self.value + self.c) % self.modulo
         return self.value
 
     def reset(self):
@@ -40,7 +40,7 @@ class LinearCongruentialGenerator:
         initial_value = self.value
 
         self.reset()
-        for _ in range(self.module):
+        for _ in range(self.modulo):
             next = self.generate()
             if next == self.seed:
                 period = self.index
